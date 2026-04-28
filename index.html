@@ -450,10 +450,7 @@ async function doSave(){
   const cbs=document.querySelectorAll('.aud-cb:checked');
   const aud=cbs.length?Array.from(cbs).map(c=>c.value).join(', '):'Todos';
   const ev={id:String(Date.now()),title:t,date:d,timeStart:document.getElementById('fts').value||'',timeEnd:document.getElementById('fte').value||'',area:document.getElementById('fa2').value,audience:aud,description:document.getElementById('fdesc').value.trim()};
-  if(ev.timeStart){const evS=tm(ev.timeStart),evE=ev.timeEnd?tm(ev.timeEnd):evS+60;const conflictos=evs.filter(x=>x.date===ev.date&&x.timeStart&&x.id!==ev.id&&(()=>{const xS=tm(x.timeStart),xE=x.timeEnd?tm(x.timeEnd):xS+60;return evS<xE&&evE>xS;})());if(conflictos.length){const nombres=conflictos.map(x=>'"'+x.title+'" ('+x.timeStart+(x.timeEnd?'–'+x.timeEnd:'')+'h)').join(', ');const accion=confirm('⚠️ Empalme detectado con: '+nombres+'
-
-Presiona ACEPTAR para cancelar el evento existente y guardar el nuevo.
-Presiona CANCELAR para modificar el horario del nuevo evento.');if(!accion){document.getElementById('savebtn').disabled=false;document.getElementById('savebtn').textContent='Guardar';return;}conflictos.forEach(x=>{const idx=evs.findIndex(e=>e.id===x.id);if(idx>-1)evs.splice(idx,1);});}}
+  if(ev.timeStart){const evS=tm(ev.timeStart),evE=ev.timeEnd?tm(ev.timeEnd):evS+60;const conflictos=evs.filter(x=>x.date===ev.date&&x.timeStart&&x.id!==ev.id&&(()=>{const xS=tm(x.timeStart),xE=x.timeEnd?tm(x.timeEnd):xS+60;return evS<xE&&evE>xS;})());if(conflictos.length){const nombres=conflictos.map(x=>'"'+x.title+'" ('+x.timeStart+(x.timeEnd?'–'+x.timeEnd:'')+'h)').join(', ');const accion=confirm('⚠️ Empalme detectado con: '+nombres+'\n\nPresiona ACEPTAR para cancelar el evento existente y guardar el nuevo.\nPresiona CANCELAR para modificar el horario del nuevo evento.');if(!accion){document.getElementById('savebtn').disabled=false;document.getElementById('savebtn').textContent='Guardar';return;}conflictos.forEach(x=>{const idx=evs.findIndex(e=>e.id===x.id);if(idx>-1)evs.splice(idx,1);});}}
   const updated=[...evs,ev].sort((a,b)=>a.date.localeCompare(b.date));
   document.getElementById('savebtn').disabled=true;
   document.getElementById('savebtn').textContent='Guardando…';
