@@ -288,6 +288,7 @@ async function startApp(){
 function setSB(s){const b=document.getElementById('sync');b.className='sb s'+s;b.textContent=s==='ok'?'● En línea':s==='busy'?'↻ Sincronizando…':'⚠ Sin conexión';}
 
 function buildLeg(){
+  if(window._legBuilt)return;window._legBuilt=true;
   const sel=document.getElementById('farea');
   Object.keys(AR).forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;sel.appendChild(o);});
   const leg=document.getElementById('aleg');
