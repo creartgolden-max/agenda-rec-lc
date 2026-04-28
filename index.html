@@ -183,7 +183,7 @@ textarea.fi2{resize:vertical;}
 const EP='agenda2026',AB='https://api.jsonbin.io/v3',LK='agenda_v3';
 const DS=7,DE=21,HP=64;
 const AR={'RH':{c:'#818cf8',b:'#1e1b4b33',bd:'#312e81'},'CMSH':{c:'#fbbf24',b:'#1c140033',bd:'#78350f'},'Cultura':{c:'#34d399',b:'#02270033',bd:'#065f46'},'Dirección':{c:'#f87171',b:'#1c000033',bd:'#7f1d1d'},'Producción':{c:'#60a5fa',b:'#0c1a3a33',bd:'#1e3a5f'},'Seguridad':{c:'#a78bfa',b:'#1a0e3a33',bd:'#4c1d95'},'SGC':{c:'#fb923c',b:'#1c0a0033',bd:'#7c2d12'},'Otro':{c:'#94a3b8',b:'#11182733',bd:'#334155'}};
-const AU=[{v:'Todos',i:'🏢'},{v:'Solo Coordinadores',i:'📋'},{v:'Brigadas',i:'🚒'},{v:'Supervisores',i:'🎯'},{v:'Líderes de Área',i:'⭐'},{v:'Personal Operativo',i:'⚙️'},{v:'Crédito y Cobranza',i:'💳'},{v:'Ventas',i:'🛒'}];
+const AU=[{v:'Todos',i:'🏢'},{v:'Solo Coordinadores',i:'📋'},{v:'Brigadas',i:'🚒'},{v:'Supervisores',i:'🎯'},{v:'Líderes de Área',i:'⭐'},{v:'Personal Operativo',i:'⚙️'},{v:'Crédito y Cobranza',i:'💳'},{v:'Ventas',i:'🛒'},{v:'Otros',i:'👥'}];
 let evs=[],edM=false,selD=new Date(),calM=new Date(),actP=null;
 const fmt=d=>{const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');return`${y}-${m}-${dd}`;};
 const pd=s=>{const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);};
@@ -449,6 +449,10 @@ async function doSave(){
   const cbs=document.querySelectorAll('.aud-cb:checked');
   const aud=cbs.length?Array.from(cbs).map(c=>c.value).join(', '):'Todos';
   const ev={id:String(Date.now()),title:t,date:d,timeStart:document.getElementById('fts').value||'',timeEnd:document.getElementById('fte').value||'',area:document.getElementById('fa2').value,audience:aud,description:document.getElementById('fdesc').value.trim()};
+  if(ev.timeStart){const evS=tm(ev.timeStart),evE=ev.timeEnd?tm(ev.timeEnd):evS+60;const conflictos=evs.filter(x=>x.date===ev.date&&x.timeStart&&x.id!==ev.id&&(()=>{const xS=tm(x.timeStart),xE=x.timeEnd?tm(x.timeEnd):xS+60;return evS<xE&&evE>xS;})());if(conflictos.length){const nombres=conflictos.map(x=>'"'+x.title+'" ('+x.timeStart+(x.timeEnd?'–'+x.timeEnd:'')+'h)').join(', ');const accion=confirm('⚠️ Empalme detectado con: '+nombres+'
+
+Presiona ACEPTAR para cancelar el evento existente y guardar el nuevo.
+Presiona CANCELAR para modificar el horario del nuevo evento.');if(!accion){document.getElementById('savebtn').disabled=false;document.getElementById('savebtn').textContent='Guardar';return;}conflictos.forEach(x=>{const idx=evs.findIndex(e=>e.id===x.id);if(idx>-1)evs.splice(idx,1);});}}
   const updated=[...evs,ev].sort((a,b)=>a.date.localeCompare(b.date));
   document.getElementById('savebtn').disabled=true;
   document.getElementById('savebtn').textContent='Guardando…';
