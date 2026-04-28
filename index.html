@@ -1,7 +1,7 @@
 <html lang="es"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agenda Organizacional REC Â· LC</title>
+<title>Agenda Organizacional REC · LC</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Karla:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <style>
 :root{--bg:#060b14;--surf:#0d1424;--border:#1e293b;--text:#e2e8f0;--muted:#475569;--dim:#334155;--accent:#4361ee;--danger:#f87171;--hr-h:64px;}
@@ -81,56 +81,56 @@ textarea.fi2{resize:vertical;}
 .sbu{background:#1c140020;color:#fbbf24;border:1px solid #78350f;}
 .ser{background:#1c000020;color:var(--danger);border:1px solid #7f1d1d;}
 </style>
-
+</head>
 <body>
 
 <div id="setup-screen" class="screen">
   <div class="card0">
-    <div class="logo">â¡ Agenda Organizacional REC Â· LC</div>
+    <div class="logo">⚡ Agenda Organizacional REC · LC</div>
     <div class="sub">Configura tu acceso una sola vez.</div>
     <div class="tab-row">
-      <button class="tab on" id="tab-a" onclick="switchTab('a')">ð§ Administrador</button>
-      <button class="tab" id="tab-v" onclick="switchTab('v')">ð Tengo un CÃ³digo</button>
+      <button class="tab on" id="tab-a" onclick="switchTab('a')">🔧 Administrador</button>
+      <button class="tab" id="tab-v" onclick="switchTab('v')">👁 Tengo un Código</button>
     </div>
     <div id="pan-a">
-      <div style="font-size:13px;color:#94a3b8;margin-bottom:16px;line-height:1.6;">Ve a <a href="https://jsonbin.io" target="_blank" style="color:var(--accent);">jsonbin.io</a> â API Keys â copia tu Master Key</div>
+      <div style="font-size:13px;color:#94a3b8;margin-bottom:16px;line-height:1.6;">Ve a <a href="https://jsonbin.io" target="_blank" style="color:var(--accent);">jsonbin.io</a> → API Keys → copia tu Master Key</div>
       <div class="fg"><label class="fl">Master Key de JSONBin</label><input id="ak" class="fi" type="text" placeholder="$2b$10$..."></div>
-      <div id="ae" class="err">â No se pudo conectar.</div>
-      <button class="bp" id="ab" onclick="doAdmin()">Crear agenda â</button>
+      <div id="ae" class="err">❌ No se pudo conectar.</div>
+      <button class="bp" id="ab" onclick="doAdmin()">Crear agenda →</button>
       <div id="code-res" style="display:none;margin-top:16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;">
-        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;">CÃ³digo de tu Agenda</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px;">Código de tu Agenda</div>
         <div id="code-val" style="font-family:monospace;font-size:18px;font-weight:700;color:var(--accent);word-break:break-all;"></div>
-        <div style="font-size:12px;color:var(--muted);margin-top:8px;">Comparte este cÃ³digo con los editores.<br>Tu Master Key nunca se comparte.</div>
-        <button class="bp" onclick="enterApp()" style="margin-top:12px;">Entrar a la agenda â</button>
+        <div style="font-size:12px;color:var(--muted);margin-top:8px;">Comparte este código con los editores.<br>Tu Master Key nunca se comparte.</div>
+        <button class="bp" onclick="enterApp()" style="margin-top:12px;">Entrar a la agenda →</button>
       </div>
     </div>
     <div id="pan-v" style="display:none;">
-      <div style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Pide el cÃ³digo al administrador.</div>
-      <div class="fg"><label class="fl">CÃ³digo de Agenda</label><input id="vc" class="fi" type="text" placeholder="69eeca5d..."></div>
-      <div id="ve" class="err">â CÃ³digo incorrecto.</div>
-      <button class="bp" id="vb" onclick="doViewer()">Entrar â</button>
+      <div style="font-size:13px;color:#94a3b8;margin-bottom:16px;">Pide el código al administrador.</div>
+      <div class="fg"><label class="fl">Código de Agenda</label><input id="vc" class="fi" type="text" placeholder="69eeca5d..."></div>
+      <div id="ve" class="err">❌ Código incorrecto.</div>
+      <button class="bp" id="vb" onclick="doViewer()">Entrar →</button>
     </div>
   </div>
 </div>
 
 <div id="edkey-screen" class="screen">
   <div class="card0">
-    <div class="logo">ð Activar EdiciÃ³n</div>
+    <div class="logo">🔑 Activar Edición</div>
     <div class="sub">Ingresa tu Master Key de JSONBin. Solo se pide una vez en este equipo.</div>
     <div class="fg"><label class="fl">Master Key de JSONBin</label><input id="ek" class="fi" type="text" placeholder="$2b$10$..."></div>
-    <div id="eke" class="err">â Master Key incorrecta.</div>
-    <button class="bp" id="ekb" onclick="doEdKey()">Verificar â</button>
+    <div id="eke" class="err">❌ Master Key incorrecta.</div>
+    <button class="bp" id="ekb" onclick="doEdKey()">Verificar →</button>
     <button class="bp2" onclick="cancelEd()">Cancelar</button>
   </div>
 </div>
 
 <div id="app" style="display: block;">
   <div class="topbar">
-    <div><div class="tt">Agenda Organizacional REC Â· LC</div><div class="ts" id="tsub">Centro de Operaciones</div></div>
+    <div><div class="tt">Agenda Organizacional REC · LC</div><div class="ts" id="tsub">Centro de Operaciones</div></div>
     <div class="tac">
-      <span id="sync" class="sb sok">â En lÃ­nea</span>
-      <select id="farea" class="btn bg" style="padding:8px 12px;" onchange="renderAll()"><option value="">Todas las Ã¡reas</option><option value="RH">RH</option><option value="CMSH">CMSH</option><option value="Cultura">Cultura</option><option value="DirecciÃ³n">DirecciÃ³n</option><option value="ProducciÃ³n">ProducciÃ³n</option><option value="Seguridad">Seguridad</option><option value="Otro">Otro</option><option value="SGC">SGC</option></select>
-      <button id="edbtn" class="btn be" onclick="toggleEd()">ð Modo Editor</button>
+      <span id="sync" class="sb sok">● En línea</span>
+      <select id="farea" class="btn bg" style="padding:8px 12px;" onchange="renderAll()"><option value="">Todas las áreas</option><option value="RH">RH</option><option value="CMSH">CMSH</option><option value="Cultura">Cultura</option><option value="Dirección">Dirección</option><option value="Producción">Producción</option><option value="Seguridad">Seguridad</option><option value="Otro">Otro</option><option value="SGC">SGC</option></select>
+      <button id="edbtn" class="btn be" onclick="toggleEd()">🔒 Modo Editor</button>
       <button id="addbtn" class="btn ba" style="display:none" onclick="openAdd()">+ Nuevo evento</button>
     </div>
   </div>
@@ -139,15 +139,15 @@ textarea.fi2{resize:vertical;}
       <div style="display:flex;flex-direction:column;gap:14px;">
         <div class="card">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-            <button onclick="prevM()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;">â¹</button>
+            <button onclick="prevM()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;">‹</button>
             <span id="cml" style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);text-transform:capitalize;">abril de 2026</span>
-            <button onclick="nextM()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;">âº</button>
+            <button onclick="nextM()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;">›</button>
           </div>
           <div class="cal-grid" id="cdow"><div class="cdow">D</div><div class="cdow">L</div><div class="cdow">M</div><div class="cdow">M</div><div class="cdow">J</div><div class="cdow">V</div><div class="cdow">S</div></div>
           <div class="cal-grid" id="cdays"><div></div><div></div><div></div><div class="cc">1</div><div class="cc">2</div><div class="cc">3</div><div class="cc">4</div><div class="cc">5</div><div class="cc">6</div><div class="cc">7</div><div class="cc">8</div><div class="cc">9</div><div class="cc">10</div><div class="cc">11</div><div class="cc">12</div><div class="cc">13</div><div class="cc">14</div><div class="cc">15</div><div class="cc">16</div><div class="cc">17</div><div class="cc">18</div><div class="cc">19</div><div class="cc">20</div><div class="cc">21</div><div class="cc">22</div><div class="cc">23</div><div class="cc">24</div><div class="cc">25</div><div class="cc">26</div><div class="cc sel">27</div><div class="cc">28<div class="dots"><div class="dot" style="background:#f87171"></div><div class="dot" style="background:#f87171"></div></div></div><div class="cc">29</div><div class="cc">30</div></div>
         </div>
-        <div class="card" id="aleg"><p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Ãreas</p><div class="li"><div class="ld" style="background:#818cf8"></div><span style="font-size:12px;color:#64748b;">RH</span></div><div class="li"><div class="ld" style="background:#fbbf24"></div><span style="font-size:12px;color:#64748b;">CMSH</span></div><div class="li"><div class="ld" style="background:#34d399"></div><span style="font-size:12px;color:#64748b;">Cultura</span></div><div class="li"><div class="ld" style="background:#f87171"></div><span style="font-size:12px;color:#64748b;">DirecciÃ³n</span></div><div class="li"><div class="ld" style="background:#60a5fa"></div><span style="font-size:12px;color:#64748b;">ProducciÃ³n</span></div><div class="li"><div class="ld" style="background:#a78bfa"></div><span style="font-size:12px;color:#64748b;">Seguridad</span></div><div class="li"><div class="ld" style="background:#94a3b8"></div><span style="font-size:12px;color:#64748b;">Otro</span></div><div class="li"><div class="ld" style="background:#fb923c"></div><span style="font-size:12px;color:#64748b;">SGC</span></div></div>
-        <div class="card"><p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Dirigido a</p><div id="auleg"></div></div>
+        <div class="card" id="aleg"><p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Áreas</p><div class="li"><div class="ld" style="background:#818cf8"></div><span style="font-size:12px;color:#64748b;">RH</span></div><div class="li"><div class="ld" style="background:#fbbf24"></div><span style="font-size:12px;color:#64748b;">CMSH</span></div><div class="li"><div class="ld" style="background:#34d399"></div><span style="font-size:12px;color:#64748b;">Cultura</span></div><div class="li"><div class="ld" style="background:#f87171"></div><span style="font-size:12px;color:#64748b;">Dirección</span></div><div class="li"><div class="ld" style="background:#60a5fa"></div><span style="font-size:12px;color:#64748b;">Producción</span></div><div class="li"><div class="ld" style="background:#a78bfa"></div><span style="font-size:12px;color:#64748b;">Seguridad</span></div><div class="li"><div class="ld" style="background:#94a3b8"></div><span style="font-size:12px;color:#64748b;">Otro</span></div><div class="li"><div class="ld" style="background:#fb923c"></div><span style="font-size:12px;color:#64748b;">SGC</span></div></div>
+        <div class="card"><p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Dirigido a</p><div id="auleg"><div class="li"><span style="font-size:12px;">🏢</span><span style="font-size:12px;color:#64748b;">Todos</span></div><div class="li"><span style="font-size:12px;">📋</span><span style="font-size:12px;color:#64748b;">Solo Coordinadores</span></div><div class="li"><span style="font-size:12px;">🚒</span><span style="font-size:12px;color:#64748b;">Brigadas</span></div><div class="li"><span style="font-size:12px;">🎯</span><span style="font-size:12px;color:#64748b;">Supervisores</span></div><div class="li"><span style="font-size:12px;">⭐</span><span style="font-size:12px;color:#64748b;">Líderes de Área</span></div><div class="li"><span style="font-size:12px;">⚙️</span><span style="font-size:12px;color:#64748b;">Personal Operativo</span></div><div class="li"><span style="font-size:12px;">💳</span><span style="font-size:12px;color:#64748b;">Crédito y Cobranza</span></div><div class="li"><span style="font-size:12px;">🛒</span><span style="font-size:12px;color:#64748b;">Ventas</span></div><div class="li"><span style="font-size:12px;">🏢</span><span style="font-size:12px;color:#64748b;">Todos</span></div><div class="li"><span style="font-size:12px;">📋</span><span style="font-size:12px;color:#64748b;">Solo Coordinadores</span></div><div class="li"><span style="font-size:12px;">🚒</span><span style="font-size:12px;color:#64748b;">Brigadas</span></div><div class="li"><span style="font-size:12px;">🎯</span><span style="font-size:12px;color:#64748b;">Supervisores</span></div><div class="li"><span style="font-size:12px;">⭐</span><span style="font-size:12px;color:#64748b;">Líderes de Área</span></div><div class="li"><span style="font-size:12px;">⚙️</span><span style="font-size:12px;color:#64748b;">Personal Operativo</span></div><div class="li"><span style="font-size:12px;">💳</span><span style="font-size:12px;color:#64748b;">Crédito y Cobranza</span></div><div class="li"><span style="font-size:12px;">🛒</span><span style="font-size:12px;color:#64748b;">Ventas</span></div></div></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;">
         <div style="border-bottom:1px solid var(--border);padding-bottom:14px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;">
@@ -156,12 +156,12 @@ textarea.fi2{resize:vertical;}
           <div id="dchips" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
         </div>
         <div class="tl-wrap" id="tlw">
-          <div class="ads" id="adstrip"><span class="adl">Sin horario</span><span style="font-size:12px;color:var(--dim);font-style:italic;">â</span></div>
-          <div class="tl-inner"><div class="tl-hrs" id="tlhrs"><div class="hl">07:00</div><div class="hl">08:00</div><div class="hl">09:00</div><div class="hl">10:00</div><div class="hl">11:00</div><div class="hl">12:00</div><div class="hl">13:00</div><div class="hl">14:00</div><div class="hl">15:00</div><div class="hl">16:00</div><div class="hl">17:00</div><div class="hl">18:00</div><div class="hl">19:00</div><div class="hl">20:00</div><div class="hl">21:00</div></div><div class="tl-grid" id="tlgrid" style="height: 960px;"><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div style="position: absolute; inset: 0px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; pointer-events: none;"><div style="font-size:32px;">ð</div><p style="color:var(--dim);font-size:14px;">Sin eventos para este dÃ­a</p></div></div></div>
+          <div class="ads" id="adstrip"><span class="adl">Sin horario</span><span style="font-size:12px;color:var(--dim);font-style:italic;">—</span></div>
+          <div class="tl-inner"><div class="tl-hrs" id="tlhrs"><div class="hl">07:00</div><div class="hl">08:00</div><div class="hl">09:00</div><div class="hl">10:00</div><div class="hl">11:00</div><div class="hl">12:00</div><div class="hl">13:00</div><div class="hl">14:00</div><div class="hl">15:00</div><div class="hl">16:00</div><div class="hl">17:00</div><div class="hl">18:00</div><div class="hl">19:00</div><div class="hl">20:00</div><div class="hl">21:00</div></div><div class="tl-grid" id="tlgrid" style="height: 960px;"><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div class="hline"><div style="position: absolute; left: 0px; right: 0px; top: 32px; height: 1px; background: rgb(18, 25, 42);"></div></div><div style="position: absolute; inset: 0px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; pointer-events: none;"><div style="font-size:32px;">📅</div><p style="color:var(--dim);font-size:14px;">Sin eventos para este día</p></div></div></div>
         </div>
-        <div id="upsec"><p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">PrÃ³ximos eventos</p><div class="upi" onclick="jumpTo('1777350579212','2026-04-28')"><div class="upb"><span style="font-size:9px;color:var(--muted);text-transform:uppercase;">abr</span><span style="font-size:17px;font-weight:800;color:var(--text);line-height:1;">28</span></div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Agenda</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">DirecciÃ³n Â· 12:30</div></div><div style="width:8px;height:8px;border-radius:50%;background:#f87171;flex-shrink:0;"></div></div><div class="upi" onclick="jumpTo('1777350776864','2026-04-28')"><div class="upb"><span style="font-size:9px;color:var(--muted);text-transform:uppercase;">abr</span><span style="font-size:17px;font-weight:800;color:var(--text);line-height:1;">28</span></div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Agenda SGC</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">DirecciÃ³n Â· 13:00</div></div><div style="width:8px;height:8px;border-radius:50%;background:#f87171;flex-shrink:0;"></div></div></div>
+        <div id="upsec"><p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Próximos eventos</p><div class="upi" onclick="jumpTo('1777350579212','2026-04-28')"><div class="upb"><span style="font-size:9px;color:var(--muted);text-transform:uppercase;">abr</span><span style="font-size:17px;font-weight:800;color:var(--text);line-height:1;">28</span></div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Agenda</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">Dirección · 12:30</div></div><div style="width:8px;height:8px;border-radius:50%;background:#f87171;flex-shrink:0;"></div></div><div class="upi" onclick="jumpTo('1777350776864','2026-04-28')"><div class="upb"><span style="font-size:9px;color:var(--muted);text-transform:uppercase;">abr</span><span style="font-size:17px;font-weight:800;color:var(--text);line-height:1;">28</span></div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Agenda SGC</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">Dirección · 13:00</div></div><div style="width:8px;height:8px;border-radius:50%;background:#f87171;flex-shrink:0;"></div></div></div>
       </div>
-      <div><div id="rpanel" style="position:sticky;top:22px;"><div class="card" style="text-align:center;"><div style="font-size:36px;margin-bottom:12px;">ð</div><p style="color:var(--dim);font-size:13px;line-height:1.6;">Selecciona un evento para ver sus detalles.</p></div></div></div>
+      <div><div id="rpanel" style="position:sticky;top:22px;"><div class="card" style="text-align:center;"><div style="font-size:36px;margin-bottom:12px;">📌</div><p style="color:var(--dim);font-size:13px;line-height:1.6;">Selecciona un evento para ver sus detalles.</p></div></div></div>
     </div>
   </div>
 </div>
@@ -169,9 +169,9 @@ textarea.fi2{resize:vertical;}
 <div class="mo" id="pmod">
   <div class="mb">
     <h3 style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:6px;">Acceso Editor</h3>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">ContraseÃ±a de ediciÃ³n.</p>
-    <input id="pin" class="fi2" type="password" placeholder="ContraseÃ±a">
-    <div id="pe" style="color:var(--danger);font-size:12px;margin:8px 0;display:none;">ContraseÃ±a incorrecta</div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">Contraseña de edición.</p>
+    <input id="pin" class="fi2" type="password" placeholder="Contraseña">
+    <div id="pe" style="color:var(--danger);font-size:12px;margin:8px 0;display:none;">Contraseña incorrecta</div>
     <div style="display:flex;gap:8px;margin-top:12px;">
       <button class="btn ba" style="flex:1;padding:11px;" onclick="checkPass()">Entrar</button>
       <button class="btn bg" style="padding:11px 14px;" onclick="closeMod()">Cancelar</button>
@@ -182,8 +182,8 @@ textarea.fi2{resize:vertical;}
 <script>
 const EP='agenda2026',AB='https://api.jsonbin.io/v3',LK='agenda_v3';
 const DS=7,DE=21,HP=64;
-const AR={'RH':{c:'#818cf8',b:'#1e1b4b33',bd:'#312e81'},'CMSH':{c:'#fbbf24',b:'#1c140033',bd:'#78350f'},'Cultura':{c:'#34d399',b:'#02270033',bd:'#065f46'},'DirecciÃ³n':{c:'#f87171',b:'#1c000033',bd:'#7f1d1d'},'ProducciÃ³n':{c:'#60a5fa',b:'#0c1a3a33',bd:'#1e3a5f'},'Seguridad':{c:'#a78bfa',b:'#1a0e3a33',bd:'#4c1d95'},'SGC':{c:'#fb923c',b:'#1c0a0033',bd:'#7c2d12'},'Otro':{c:'#94a3b8',b:'#11182733',bd:'#334155'}};
-const AU=[{v:'Todos',i:'ð¢'},{v:'Solo Coordinadores',i:'ð'},{v:'Brigadas',i:'ð'},{v:'Supervisores',i:'ð¯'},{v:'LÃ­deres de Ãrea',i:'â­'},{v:'Personal Operativo',i:'âï¸'},{v:'CrÃ©dito y Cobranza',i:'ð³'},{v:'Ventas',i:'ð'}];
+const AR={'RH':{c:'#818cf8',b:'#1e1b4b33',bd:'#312e81'},'CMSH':{c:'#fbbf24',b:'#1c140033',bd:'#78350f'},'Cultura':{c:'#34d399',b:'#02270033',bd:'#065f46'},'Dirección':{c:'#f87171',b:'#1c000033',bd:'#7f1d1d'},'Producción':{c:'#60a5fa',b:'#0c1a3a33',bd:'#1e3a5f'},'Seguridad':{c:'#a78bfa',b:'#1a0e3a33',bd:'#4c1d95'},'SGC':{c:'#fb923c',b:'#1c0a0033',bd:'#7c2d12'},'Otro':{c:'#94a3b8',b:'#11182733',bd:'#334155'}};
+const AU=[{v:'Todos',i:'🏢'},{v:'Solo Coordinadores',i:'📋'},{v:'Brigadas',i:'🚒'},{v:'Supervisores',i:'🎯'},{v:'Líderes de Área',i:'⭐'},{v:'Personal Operativo',i:'⚙️'},{v:'Crédito y Cobranza',i:'💳'},{v:'Ventas',i:'🛒'}];
 let evs=[],edM=false,selD=new Date(),calM=new Date(),actP=null;
 const fmt=d=>{const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');return`${y}-${m}-${dd}`;};
 const pd=s=>{const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);};
@@ -228,14 +228,14 @@ function switchTab(t){
 async function doAdmin(){
   const mk=document.getElementById('ak').value.trim();if(!mk)return;
   const btn=document.getElementById('ab'),err=document.getElementById('ae');
-  btn.disabled=true;btn.textContent='Creandoâ¦';err.style.display='none';
+  btn.disabled=true;btn.textContent='Creando…';err.style.display='none';
   try{
     const bid=await apiCreate(mk);
     sc({binId:bid,masterKey:mk,role:'admin'});
     document.getElementById('code-val').textContent=bid;
     document.getElementById('code-res').style.display='';
     btn.style.display='none';
-  }catch(e){err.style.display='block';btn.disabled=false;btn.textContent='Crear agenda â';}
+  }catch(e){err.style.display='block';btn.disabled=false;btn.textContent='Crear agenda →';}
 }
 
 function enterApp(){document.getElementById('setup-screen').style.display='none';startApp();}
@@ -243,20 +243,20 @@ function enterApp(){document.getElementById('setup-screen').style.display='none'
 async function doViewer(){
   const code=document.getElementById('vc').value.trim();if(!code)return;
   const btn=document.getElementById('vb'),err=document.getElementById('ve');
-  btn.disabled=true;btn.textContent='Verificandoâ¦';err.style.display='none';
+  btn.disabled=true;btn.textContent='Verificando…';err.style.display='none';
   try{
     const r=await fetch(`${AB}/b/${code}/latest`);
     if(!r.ok)throw new Error();
     sc({binId:code,role:'viewer'});
     document.getElementById('setup-screen').style.display='none';
     startApp();
-  }catch(e){err.style.display='block';btn.disabled=false;btn.textContent='Entrar â';}
+  }catch(e){err.style.display='block';btn.disabled=false;btn.textContent='Entrar →';}
 }
 
 async function doEdKey(){
   const mk=document.getElementById('ek').value.trim();if(!mk)return;
   const btn=document.getElementById('ekb'),err=document.getElementById('eke');
-  btn.disabled=true;btn.textContent='Verificandoâ¦';err.style.display='none';
+  btn.disabled=true;btn.textContent='Verificando…';err.style.display='none';
   try{
     const cfg=gc();
     const r=await fetch(`${AB}/b/${cfg.binId}/latest`,{headers:{'X-Master-Key':mk}});
@@ -264,7 +264,7 @@ async function doEdKey(){
     sc({...cfg,masterKey:mk,role:'editor'});
     document.getElementById('edkey-screen').style.display='none';
     activateEd();
-  }catch(e){err.style.display='block';btn.disabled=false;btn.textContent='Verificar â';}
+  }catch(e){err.style.display='block';btn.disabled=false;btn.textContent='Verificar →';}
 }
 
 function cancelEd(){document.getElementById('edkey-screen').style.display='none';}
@@ -285,13 +285,13 @@ async function startApp(){
   setInterval(async()=>{try{evs=await apiRead();setSB('ok');renderAll();}catch(e){setSB('err');}},60000);
 }
 
-function setSB(s){const b=document.getElementById('sync');b.className='sb s'+s;b.textContent=s==='ok'?'â En lÃ­nea':s==='busy'?'â» Sincronizandoâ¦':'â  Sin conexiÃ³n';}
+function setSB(s){const b=document.getElementById('sync');b.className='sb s'+s;b.textContent=s==='ok'?'● En línea':s==='busy'?'↻ Sincronizando…':'⚠ Sin conexión';}
 
 function buildLeg(){
   const sel=document.getElementById('farea');
   Object.keys(AR).forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;sel.appendChild(o);});
   const leg=document.getElementById('aleg');
-  leg.innerHTML='<p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Ãreas</p>';
+  leg.innerHTML='<p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Áreas</p>';
   Object.entries(AR).forEach(([a,{c}])=>{leg.innerHTML+=`<div class="li"><div class="ld" style="background:${c}"></div><span style="font-size:12px;color:#64748b;">${a}</span></div>`;});
   const al=document.getElementById('auleg');
   AU.forEach(({v,i})=>{al.innerHTML+=`<div class="li"><span style="font-size:12px;">${i}</span><span style="font-size:12px;color:#64748b;">${v}</span></div>`;});
@@ -335,7 +335,7 @@ function rTL(){
   const timed=de.filter(e=>e.timeStart),ad=de.filter(e=>!e.timeStart);
   const strip=document.getElementById('adstrip');
   strip.innerHTML='<span class="adl">Sin horario</span>';
-  if(!ad.length)strip.innerHTML+='<span style="font-size:12px;color:var(--dim);font-style:italic;">â</span>';
+  if(!ad.length)strip.innerHTML+='<span style="font-size:12px;color:var(--dim);font-style:italic;">—</span>';
   else ad.forEach(e=>{const A=AR[e.area]||AR['Otro'];strip.innerHTML+=`<span class="chip" style="background:${A.b};color:${A.c};border:1px solid ${A.bd};cursor:pointer;" onclick="openEv('${e.id}')">${ex(e.title)}</span>`;});
   const hrs=document.getElementById('tlhrs');hrs.innerHTML='';
   for(let h=DS;h<=DE;h++){const l=document.createElement('div');l.className='hl';l.textContent=String(h).padStart(2,'0')+':00';hrs.appendChild(l);}
@@ -352,10 +352,10 @@ function rTL(){
     const bl=document.createElement('div');bl.className='evb';
     bl.style.cssText=`top:${top}px;height:${ht}px;left:calc(${lft}%+4px);width:calc(${pct}%-8px);background:${A.b};border-left-color:${A.c};`;
     bl.onclick=()=>openEv(e.id);
-    bl.innerHTML=`<div class="evb-t" style="color:${A.c};">${ex(e.title)}</div>${ht>=44?`<div class="evb-m" style="color:${A.c};">${e.timeStart}${e.timeEnd?'â'+e.timeEnd:''} Â· ${e.audience}</div>`:''}`;
+    bl.innerHTML=`<div class="evb-t" style="color:${A.c};">${ex(e.title)}</div>${ht>=44?`<div class="evb-m" style="color:${A.c};">${e.timeStart}${e.timeEnd?'–'+e.timeEnd:''} · ${e.audience}</div>`:''}`;
     gr.appendChild(bl);
   });
-  if(!de.length){const em=document.createElement('div');em.style.cssText='position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:none;';em.innerHTML='<div style="font-size:32px;">ð</div><p style="color:var(--dim);font-size:14px;">Sin eventos para este dÃ­a</p>';gr.appendChild(em);}
+  if(!de.length){const em=document.createElement('div');em.style.cssText='position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:none;';em.innerHTML='<div style="font-size:32px;">📅</div><p style="color:var(--dim);font-size:14px;">Sin eventos para este día</p>';gr.appendChild(em);}
   const ft=timed.sort((a,b)=>(a.timeStart||'').localeCompare(b.timeStart||''))[0];
   document.getElementById('tlw').scrollTop=ft?Math.max(0,(tm(ft.timeStart)-DS*60-30)*(HP/60)):(8-DS)*HP;
 }
@@ -375,9 +375,9 @@ function rUp(){
   const up=evs.filter(e=>e.date>ss&&(!fa||e.area===fa)).sort((a,b)=>a.date.localeCompare(b.date)||(a.timeStart||'').localeCompare(b.timeStart||'')).slice(0,4);
   const el=document.getElementById('upsec');
   if(!up.length){el.innerHTML='';return;}
-  el.innerHTML='<p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">PrÃ³ximos eventos</p>'+
+  el.innerHTML='<p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Próximos eventos</p>'+
     up.map(e=>{const A=AR[e.area]||AR['Otro'],dd=e.date.split('-')[2],mn=pd(e.date).toLocaleDateString('es-MX',{month:'short'});
-    return`<div class="upi" onclick="jumpTo('${e.id}','${e.date}')"><div class="upb"><span style="font-size:9px;color:var(--muted);text-transform:uppercase;">${mn}</span><span style="font-size:17px;font-weight:800;color:var(--text);line-height:1;">${dd}</span></div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${ex(e.title)}</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">${e.area} Â· ${e.timeStart||'Sin hora'}</div></div><div style="width:8px;height:8px;border-radius:50%;background:${A.c};flex-shrink:0;"></div></div>`;
+    return`<div class="upi" onclick="jumpTo('${e.id}','${e.date}')"><div class="upb"><span style="font-size:9px;color:var(--muted);text-transform:uppercase;">${mn}</span><span style="font-size:17px;font-weight:800;color:var(--text);line-height:1;">${dd}</span></div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${ex(e.title)}</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">${e.area} · ${e.timeStart||'Sin hora'}</div></div><div style="width:8px;height:8px;border-radius:50%;background:${A.c};flex-shrink:0;"></div></div>`;
   }).join('');
 }
 
@@ -396,16 +396,16 @@ function rPanel(){
         <h3 style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#fff;">Nuevo Evento</h3>
         <button style="background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;" onclick="closeP()">&#x2715;</button>
       </div>
-      <div class="fg"><label class="fl2">TÃ­tulo *</label><input id="ft" class="fi2" type="text" placeholder="Ej: CapacitaciÃ³n Seguridad" /></div>
+      <div class="fg"><label class="fl2">Título *</label><input id="ft" class="fi2" type="text" placeholder="Ej: Capacitación Seguridad" /></div>
       <div class="fg"><label class="fl2">Fecha *</label><input id="fd" class="fi2" type="date" value="${ss}" /></div>
       <div class="fg"><label class="fl2">Horario</label>
         <div class="tr2">
           <div><div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Inicio</div><input id="fts" class="fi2" type="time" /></div>
           <div><div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Fin</div><input id="fte" class="fi2" type="time" /></div>
         </div>
-        <div style="font-size:11px;color:var(--dim);margin-top:5px;">Deja vacÃ­o si no tiene horario fijo.</div>
+        <div style="font-size:11px;color:var(--dim);margin-top:5px;">Deja vacío si no tiene horario fijo.</div>
       </div>
-      <div class="fg"><label class="fl2">Ãrea responsable</label>
+      <div class="fg"><label class="fl2">Área responsable</label>
         <select id="fa2" class="fi2">${Object.keys(AR).map(a=>`<option value="${a}">${a}</option>`).join('')}</select>
       </div>
       <div class="fg"><label class="fl2">Dirigido a</label>
@@ -413,10 +413,10 @@ function rPanel(){
           ${AU.map(a=>`<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;"><input type="checkbox" class="aud-cb" value="${a.v}" style="accent-color:var(--accent);width:15px;height:15px;"> ${a.i} ${a.v}</label>`).join('')}
         </div>
       </div>
-      <div class="fg" style="margin-bottom:14px;"><label class="fl2">DescripciÃ³n / Notas</label>
-        <textarea id="fdesc" class="fi2" rows="3" placeholder="Instructor, lugar, materialesâ¦"></textarea>
+      <div class="fg" style="margin-bottom:14px;"><label class="fl2">Descripción / Notas</label>
+        <textarea id="fdesc" class="fi2" rows="3" placeholder="Instructor, lugar, materiales…"></textarea>
       </div>
-      <div id="ferr" style="color:var(--danger);font-size:12px;margin-bottom:8px;display:none;">Completa tÃ­tulo y fecha.</div>
+      <div id="ferr" style="color:var(--danger);font-size:12px;margin-bottom:8px;display:none;">Completa título y fecha.</div>
       <div style="display:flex;gap:8px;">
         <button id="savebtn" class="btn ba" style="flex:1;padding:11px;font-size:14px;font-weight:700;">Guardar</button>
         <button class="btn bg" style="padding:11px 14px;" onclick="closeP()">Cancelar</button>
@@ -425,20 +425,20 @@ function rPanel(){
     document.getElementById('savebtn').addEventListener('click', doSave);
   } else if(actP&&typeof actP==='object'){
     const e=actP,A=AR[e.area]||AR['Otro'];
-    const ts=e.timeStart?(e.timeStart+(e.timeEnd?' â '+e.timeEnd:'')):'Sin horario especÃ­fico';
+    const ts=e.timeStart?(e.timeStart+(e.timeEnd?' – '+e.timeEnd:'')):'Sin horario específico';
     el.innerHTML=`<div class="card">
       <div style="display:flex;justify-content:space-between;margin-bottom:14px;">
-        <div style="width:48px;height:48px;border-radius:14px;background:${A.b};border:1px solid ${A.bd};display:flex;align-items:center;justify-content:center;font-size:20px;">ð</div>
+        <div style="width:48px;height:48px;border-radius:14px;background:${A.b};border:1px solid ${A.bd};display:flex;align-items:center;justify-content:center;font-size:20px;">📋</div>
         <button style="background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;" onclick="closeP()">&#x2715;</button>
       </div>
       <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:14px;">${ex(e.title)}</h3>
-      ${[['Fecha',hd(e.date)],['Horario',ts],['Ãrea',e.area],['Para',e.audience]].map(([l,v])=>`<div class="dr"><span class="dl">${l}</span><span class="dv">${v}</span></div>`).join('')}
+      ${[['Fecha',hd(e.date)],['Horario',ts],['Área',e.area],['Para',e.audience]].map(([l,v])=>`<div class="dr"><span class="dl">${l}</span><span class="dv">${v}</span></div>`).join('')}
       ${e.description?`<div style="margin-top:12px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;"><div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:6px;">Notas</div><div style="font-size:13px;color:#94a3b8;line-height:1.6;">${ex(e.description)}</div></div>`:''}
-      ${edM?`<button id="delbtn" data-id="${e.id}" class="btn" style="width:100%;margin-top:12px;background:#1f0e0e;border:1px solid #7f1d1d;color:var(--danger);padding:11px;">ð Eliminar evento</button>`:''}
+      ${edM?`<button id="delbtn" data-id="${e.id}" class="btn" style="width:100%;margin-top:12px;background:#1f0e0e;border:1px solid #7f1d1d;color:var(--danger);padding:11px;">🗑 Eliminar evento</button>`:''}
     </div>`;
     if(edM){const db=document.getElementById('delbtn');if(db)db.addEventListener('click',()=>doDelete(db.dataset.id));}
   } else {
-    el.innerHTML=`<div class="card" style="text-align:center;"><div style="font-size:36px;margin-bottom:12px;">ð</div><p style="color:var(--dim);font-size:13px;line-height:1.6;">Selecciona un evento para ver sus detalles.${edM?'<br><span style="color:var(--accent);cursor:pointer;font-weight:600;" onclick="openAdd()">o crea uno nuevo</span>':''}</p></div>`;
+    el.innerHTML=`<div class="card" style="text-align:center;"><div style="font-size:36px;margin-bottom:12px;">📌</div><p style="color:var(--dim);font-size:13px;line-height:1.6;">Selecciona un evento para ver sus detalles.${edM?'<br><span style="color:var(--accent);cursor:pointer;font-weight:600;" onclick="openAdd()">o crea uno nuevo</span>':''}</p></div>`;
   }
 }
 
@@ -450,7 +450,7 @@ async function doSave(){
   const ev={id:String(Date.now()),title:t,date:d,timeStart:document.getElementById('fts').value||'',timeEnd:document.getElementById('fte').value||'',area:document.getElementById('fa2').value,audience:aud,description:document.getElementById('fdesc').value.trim()};
   const updated=[...evs,ev].sort((a,b)=>a.date.localeCompare(b.date));
   document.getElementById('savebtn').disabled=true;
-  document.getElementById('savebtn').textContent='Guardandoâ¦';
+  document.getElementById('savebtn').textContent='Guardando…';
   setSB('busy');
   try{
     await apiWrite(updated);
@@ -459,20 +459,20 @@ async function doSave(){
     setSB('err');
     document.getElementById('savebtn').disabled=false;
     document.getElementById('savebtn').textContent='Guardar';
-    alert('â Error: '+e.message);
+    alert('❌ Error: '+e.message);
   }
 }
 
 async function doDelete(id){
-  if(!confirm('Â¿Eliminar este evento?'))return;
+  if(!confirm('¿Eliminar este evento?'))return;
   const updated=evs.filter(e=>e.id!==id);
   setSB('busy');
   try{await apiWrite(updated);evs=updated;setSB('ok');actP=null;renderAll();}
-  catch(e){setSB('err');alert('â Error al eliminar: '+e.message);}
+  catch(e){setSB('err');alert('❌ Error al eliminar: '+e.message);}
 }
 
 function toggleEd(){
-  if(edM){edM=false;document.getElementById('edbtn').textContent='ð Modo Editor';document.getElementById('edbtn').classList.remove('on');document.getElementById('addbtn').style.display='none';actP=null;renderAll();}
+  if(edM){edM=false;document.getElementById('edbtn').textContent='🔒 Modo Editor';document.getElementById('edbtn').classList.remove('on');document.getElementById('addbtn').style.display='none';actP=null;renderAll();}
   else{
     const cfg=gc();
     if(cfg&&cfg.masterKey){document.getElementById('pmod').classList.add('open');setTimeout(()=>document.getElementById('pin').focus(),100);}
@@ -485,12 +485,10 @@ function checkPass(){
   else document.getElementById('pe').style.display='block';
 }
 
-function activateEd(){edM=true;document.getElementById('edbtn').textContent='ð Editor activo';document.getElementById('edbtn').classList.add('on');document.getElementById('addbtn').style.display='';renderAll();}
+function activateEd(){edM=true;document.getElementById('edbtn').textContent='🔓 Editor activo';document.getElementById('edbtn').classList.add('on');document.getElementById('addbtn').style.display='';renderAll();}
 function closeMod(){document.getElementById('pmod').classList.remove('open');document.getElementById('pin').value='';document.getElementById('pe').style.display='none';}
 document.getElementById('pmod').addEventListener('click',e=>{if(e.target===e.currentTarget)closeMod();});
 document.getElementById('pin').addEventListener('keydown',e=>{if(e.key==='Enter')checkPass();});
 </script>
-  <script>['claude-agent-glow-border','claude-agent-stop-container','claude-agent-animation-styles'].forEach(id=>{const el=document.getElementById(id);if(el)el.remove();});</script></script>
 </body>
 </html>
-
