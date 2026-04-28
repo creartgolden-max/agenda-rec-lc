@@ -490,6 +490,7 @@ function closeMod(){document.getElementById('pmod').classList.remove('open');doc
 document.getElementById('pmod').addEventListener('click',e=>{if(e.target===e.currentTarget)closeMod();});
 document.getElementById('pin').addEventListener('keydown',e=>{if(e.key==='Enter')checkPass();});
 </script>
+  <script>['claude-agent-glow-border','claude-agent-stop-container','claude-agent-animation-styles'].forEach(id=>{const el=document.getElementById(id);if(el)el.remove();});</script></script>
 </body>
 </html>
 
