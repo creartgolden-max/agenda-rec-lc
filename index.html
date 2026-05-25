@@ -1,750 +1,377 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Agenda Organizacional REC · LC</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
-
 <style>
-
 :root{--bg:#060b14;--surf:#0d1424;--border:#1e293b;--text:#e2e8f0;--muted:#475569;--dim:#334155;--accent:#4361ee;--danger:#f87171;--hr-h:64px;}
-
 *{box-sizing:border-box;margin:0;padding:0;}
-
 body{font-family:'Karla',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-
 ::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
-
 input,select,textarea,button{font-family:'Karla',sans-serif;color-scheme:dark;}
-
 #app{display:none;}
-
 .topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:20px 20px 0;max-width:1360px;margin:0 auto 18px;}
-
 .tt{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:#fff;}
-
 .ts{font-size:13px;color:var(--muted);margin-top:2px;}
-
 .tac{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
-
 .wrapper{padding:0 20px 40px;max-width:1360px;margin:0 auto;}
-
 .mg{display:grid;grid-template-columns:260px 1fr 300px;gap:16px;align-items:start;}
-
 .card{background:var(--surf);border:1px solid var(--border);border-radius:18px;padding:18px;}
-
 .btn{border:none;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;transition:opacity .15s;}
-
 .btn:hover{opacity:.8;}
-
 .ba{background:var(--accent);color:#fff;}
-
 .bg2{background:var(--surf);border:1px solid var(--border);color:var(--muted);}
-
 .be{border:1px solid var(--border);background:var(--surf);color:var(--muted);}
-
 .be.on{background:#1e3a5f20;border-color:#3b82f6;color:#60a5fa;}
-
 .chip{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap;}
-
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);}
-
 .cdow{text-align:center;font-size:10px;color:var(--dim);font-weight:700;padding:3px 0;}
-
 .cc{text-align:center;padding:5px 0;border-radius:8px;font-size:12px;color:#64748b;cursor:pointer;transition:background .12s;}
-
 .cc:hover{background:#1a2540;}.cc.tod{color:#60a5fa;background:#1e293b;}.cc.sel{background:var(--accent);color:#fff;font-weight:700;}
-
 .dots{display:flex;justify-content:center;gap:2px;margin-top:1px;min-height:5px;}
-
 .dot{width:4px;height:4px;border-radius:50%;}
-
 .tl-wrap{overflow-y:auto;max-height:720px;border-radius:16px;background:var(--surf);border:1px solid var(--border);}
-
 .tl-inner{display:flex;}
-
 .tl-hrs{width:52px;flex-shrink:0;position:sticky;left:0;background:var(--surf);z-index:10;border-right:1px solid var(--border);}
-
 .hl{height:var(--hr-h);display:flex;align-items:flex-start;justify-content:flex-end;padding:6px 8px 0 0;font-size:11px;color:var(--dim);font-weight:600;position:relative;}
-
 .hl::after{content:'';position:absolute;right:0;top:0;width:8px;height:1px;background:var(--border);}
-
 .tl-grid{flex:1;position:relative;min-width:0;}
-
 .hline{height:var(--hr-h);border-bottom:1px solid #1a2540;position:relative;}
-
 .now-line{position:absolute;left:0;right:0;height:2px;background:#4361ee88;z-index:5;pointer-events:none;}
-
 .now-dot{position:absolute;left:-5px;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--accent);}
-
 .evb{position:absolute;border-radius:10px;padding:7px 10px;overflow:hidden;cursor:pointer;border-left:3px solid transparent;transition:filter .15s,transform .1s;z-index:4;}
-
 .evb:hover{filter:brightness(1.15);transform:translateX(2px);}
-
 .evb-t{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
 .evb-m{font-size:10px;opacity:.8;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-
 .ads{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-height:42px;}
-
 .adl{font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-right:4px;flex-shrink:0;}
-
 .fg{margin-bottom:13px;}
-
 .fl{display:block;font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;}
-
 .fi{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:9px 12px;color:var(--text);font-size:13px;outline:none;}
-
 .fi:focus{border-color:var(--accent);}
-
 textarea.fi{resize:vertical;}
-
 .tr2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-
 .dr{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
-
 .dl{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0;}
-
 .dv{font-size:13px;color:var(--text);text-align:right;}
-
 .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:300;align-items:center;justify-content:center;}
-
 .mo.open{display:flex;}
-
 .mb{background:var(--surf);border:1px solid var(--border);border-radius:22px;padding:32px;width:320px;}
-
 .li{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-
 .ld{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
-
 .upi{display:flex;gap:12px;align-items:center;padding:9px 10px;border-radius:12px;margin-bottom:3px;cursor:pointer;}
-
 .upi:hover{background:#111827;}
-
 .upb{width:44px;height:44px;background:var(--surf);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
-
 .sb{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;}
-
 .sok{background:#02270020;color:#34d399;border:1px solid #065f46;}
-
 .sbu{background:#1c140020;color:#fbbf24;border:1px solid #78350f;}
-
 .ser{background:#1c000020;color:var(--danger);border:1px solid #7f1d1d;}
-
 </style>
-
 </head>
-
 <body>
-
-
 <div id="app">
-
   <div class="topbar">
-
     <div><div class="tt">Agenda Organizacional REC · LC</div><div class="ts">Centro de Operaciones</div></div>
-
     <div class="tac">
-
       <span id="sync" class="sb sok">● En línea</span>
-
       <select id="farea" class="btn bg2" style="padding:8px 12px;" onchange="renderAll()"><option value="">Todas las áreas</option></select>
-
       <button id="edbtn" class="btn be" onclick="toggleEd()">🔒 Modo Editor</button>
-
       <button id="addbtn" class="btn ba" style="display:none" onclick="openAdd()">+ Nuevo evento</button>
-
     </div>
-
   </div>
-
   <div class="wrapper">
-
     <div class="mg">
-
       <div style="display:flex;flex-direction:column;gap:14px;">
-
         <div class="card">
-
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-
-            <button onclick="prevM()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;">‹</button>
-
+            <button onclick="prevM()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;">&#8249;</button>
             <span id="cml" style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);text-transform:capitalize;"></span>
-
-            <button onclick="nextM()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;">›</button>
-
+            <button onclick="nextM()" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;">&#8250;</button>
           </div>
-
           <div class="cal-grid" id="cdow"></div>
-
           <div class="cal-grid" id="cdays"></div>
-
         </div>
-
         <div class="card" id="aleg"></div>
-
         <div class="card"><p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Dirigido a</p><div id="auleg"></div></div>
-
       </div>
-
       <div style="display:flex;flex-direction:column;gap:14px;">
-
         <div style="border-bottom:1px solid var(--border);padding-bottom:14px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;">
-
           <div>
-
             <h2 id="dname" style="font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:#fff;line-height:1;text-transform:capitalize;"></h2>
-
             <p id="dfull" style="font-size:14px;color:var(--muted);margin-top:4px;text-transform:capitalize;"></p>
-
           </div>
-
           <div id="dchips" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
-
         </div>
-
         <div class="tl-wrap" id="tlw">
-
           <div class="ads" id="adstrip"><span class="adl">Sin horario</span></div>
-
           <div class="tl-inner"><div class="tl-hrs" id="tlhrs"></div><div class="tl-grid" id="tlgrid"></div></div>
-
         </div>
-
         <div id="upsec"></div>
-
       </div>
-
       <div><div id="rpanel" style="position:sticky;top:22px;"></div></div>
-
     </div>
-
   </div>
-
 </div>
-
 <!-- Password modal -->
-
 <div class="mo" id="pmod">
-
   <div class="mb">
-
     <h3 style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:6px;">Acceso Editor</h3>
-
     <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">Contraseña de edición.</p>
-
     <input id="pin" class="fi" type="password" placeholder="Contraseña" />
-
     <div id="pe" style="color:var(--danger);font-size:12px;margin:8px 0;display:none;">Contraseña incorrecta</div>
-
     <div style="display:flex;gap:8px;margin-top:12px;">
-
       <button class="btn ba" style="flex:1;padding:11px;" onclick="checkPass()">Entrar</button>
-
       <button class="btn bg2" style="padding:11px 14px;" onclick="closeMod()">Cancelar</button>
-
     </div>
-
   </div>
-
 </div>
-
 <script>
-
 // ══ SUPABASE CONFIG ══
-
 const SB_URL  = 'https://qcwpnovwyhzhqqmhjxco.supabase.co';
-
 const SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjd3Bub3Z3eWh6aHFxbWhqeGNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk3MDA3OTUsImV4cCI6MjA5NTI3Njc5NX0.-MSnn07PdxstQ90OLf16823Nvihr47ePXoQSFvgC3mU';
-
 const EP      = 'agenda2026';
-
 const DS=7,DE=21,HP=64;
-
 const AR={'RH':{c:'#818cf8',b:'#1e1b4b33',bd:'#312e81'},'CMSH':{c:'#fbbf24',b:'#1c140033',bd:'#78350f'},'Cultura':{c:'#34d399',b:'#02270033',bd:'#065f46'},'Dirección':{c:'#f87171',b:'#1c000033',bd:'#7f1d1d'},'Producción':{c:'#60a5fa',b:'#0c1a3a33',bd:'#1e3a5f'},'Seguridad':{c:'#a78bfa',b:'#1a0e3a33',bd:'#4c1d95'},'Otro':{c:'#94a3b8',b:'#11182733',bd:'#334155'}};
-
 const AU=[{v:'Todos',i:'🏢'},{v:'Solo Coordinadores',i:'📋'},{v:'Brigadas',i:'🚒'},{v:'Supervisores',i:'🎯'},{v:'Líderes de Área',i:'⭐'},{v:'Personal Operativo',i:'⚙️'},{v:'Crédito y Cobranza',i:'💳'},{v:'Ventas',i:'🛒'}];
-
 let evs=[],edM=false,selD=new Date(),calM=new Date(),actP=null;
-
 const fmt=d=>{const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),dd=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${dd}`;};
-
 const pd=s=>{const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);};
-
 const hd=s=>pd(s).toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long'});
-
 const tm=t=>{if(!t)return null;const[h,m]=t.split(':').map(Number);return h*60+m;};
-
 const ex=s=>String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-
 const sbH={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
-
 async function apiRead(){
-
   const r=await fetch(`${SB_URL}/rest/v1/eventos?select=*&order=date.asc`,{headers:sbH});
-
   if(!r.ok)throw new Error('read '+r.status);
-
   return await r.json();
-
 }
-
 async function apiInsert(ev){
-
   const r=await fetch(`${SB_URL}/rest/v1/eventos`,{
-
     method:'POST',
-
     headers:{...sbH,'Prefer':'return=representation'},
-
     body:JSON.stringify(ev)
-
   });
-
   if(!r.ok){const t=await r.text();throw new Error('insert '+r.status+': '+t);}
-
   return await r.json();
-
 }
-
 async function apiDelete(id){
-
   const r=await fetch(`${SB_URL}/rest/v1/eventos?id=eq.${id}`,{
-
     method:'DELETE',
-
     headers:sbH
-
   });
-
   if(!r.ok)throw new Error('delete '+r.status);
-
 }
-
 function setSB(s){
-
   const b=document.getElementById('sync');
-
   b.className='sb s'+s;
-
   b.textContent=s==='ok'?'● En línea':s==='busy'?'↻ Sincronizando…':'⚠ Sin conexión';
-
 }
-
 window.addEventListener('DOMContentLoaded',async()=>{
-
   document.getElementById('app').style.display='block';
-
   buildLeg();setSB('busy');
-
   try{evs=await apiRead();setSB('ok');}catch(e){setSB('err');console.error(e);}
-
   renderAll();
-
   setInterval(async()=>{
-
+    // Only refresh if no form is open
+    if(actP==='add') return;
     try{evs=await apiRead();setSB('ok');renderAll();}catch(e){setSB('err');}
-
   },30000);
-
 });
-
 function buildLeg(){
-
   const sel=document.getElementById('farea');
-
   Object.keys(AR).forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;sel.appendChild(o);});
-
   const leg=document.getElementById('aleg');
-
   leg.innerHTML='<p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Áreas</p>';
-
   Object.entries(AR).forEach(([a,{c}])=>{leg.innerHTML+=`<div class="li"><div class="ld" style="background:${c}"></div><span style="font-size:12px;color:#64748b;">${a}</span></div>`;});
-
   const al=document.getElementById('auleg');
-
   AU.forEach(({v,i})=>{al.innerHTML+=`<div class="li"><span style="font-size:12px;">${i}</span><span style="font-size:12px;color:#64748b;">${v}</span></div>`;});
-
 }
-
 function renderAll(){rCal();rDH();rTL();rUp();rPanel();}
-
 function rCal(){
-
   const y=calM.getFullYear(),m=calM.getMonth();
-
   document.getElementById('cml').textContent=calM.toLocaleDateString('es-MX',{month:'long',year:'numeric'});
-
   document.getElementById('cdow').innerHTML=['D','L','M','M','J','V','S'].map(d=>`<div class="cdow">${d}</div>`).join('');
-
   const fd=new Date(y,m,1).getDay(),ld=new Date(y,m+1,0).getDate(),ts=fmt(new Date()),ss=fmt(selD),fa=document.getElementById('farea').value;
-
   const g=document.getElementById('cdays');g.innerHTML='';
-
   for(let i=0;i<fd;i++){const c=document.createElement('div');g.appendChild(c);}
-
   for(let d=1;d<=ld;d++){
-
     const ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-
     const de=evOn(ds,fa);
-
     const c=document.createElement('div');
-
     c.className='cc'+(ds===ss?' sel':(ds===ts?' tod':''));
-
     c.onclick=()=>{selD=new Date(y,m,d);renderAll();};
-
     let dots='';
-
     if(de.length&&ds!==ss)dots='<div class="dots">'+de.slice(0,3).map(e=>`<div class="dot" style="background:${(AR[e.area]||AR['Otro']).c}"></div>`).join('')+'</div>';
-
     c.innerHTML=d+dots;g.appendChild(c);
-
   }
-
 }
-
 function prevM(){calM=new Date(calM.getFullYear(),calM.getMonth()-1);renderAll();}
-
 function nextM(){calM=new Date(calM.getFullYear(),calM.getMonth()+1);renderAll();}
-
 function rDH(){
-
   const ss=fmt(selD),fa=document.getElementById('farea').value,de=evOn(ss,fa);
-
   document.getElementById('dname').textContent=selD.toLocaleDateString('es-MX',{weekday:'long'});
-
   document.getElementById('dfull').textContent=selD.toLocaleDateString('es-MX',{day:'numeric',month:'long',year:'numeric'});
-
   const ch=document.getElementById('dchips');
-
-  ch.innerHTML=de.length?[...new Set(de.map(e=>e.area))].map(a=>{const A=AR[a]||AR['Otro'];return `<span class="chip" style="background:${A.b};color:${A.c};border:1px solid ${A.bd};">${a}</span>`;}).join(''):'';
-
+  ch.innerHTML=de.length?[...new Set(de.map(e=>e.area))].map(a=>{const A=AR[a]||AR['Otro'];return`<span class="chip" style="background:${A.b};color:${A.c};border:1px solid ${A.bd};">${a}</span>`;}).join(''):'';
 }
-
 function evOn(ds,fa){return evs.filter(e=>e.date===ds&&(!fa||e.area===fa));}
-
 function rTL(){
-
   const ss=fmt(selD),fa=document.getElementById('farea').value,de=evOn(ss,fa);
-
   const timed=de.filter(e=>e.timeStart),ad=de.filter(e=>!e.timeStart);
-
   const strip=document.getElementById('adstrip');
-
   strip.innerHTML='<span class="adl">Sin horario</span>';
-
   if(!ad.length)strip.innerHTML+='<span style="font-size:12px;color:var(--dim);font-style:italic;">—</span>';
-
   else ad.forEach(e=>{const A=AR[e.area]||AR['Otro'];strip.innerHTML+=`<span class="chip" style="background:${A.b};color:${A.c};border:1px solid ${A.bd};cursor:pointer;" onclick="openEv('${e.id}')">${ex(e.title)}</span>`;});
-
   const hrs=document.getElementById('tlhrs');hrs.innerHTML='';
-
   for(let h=DS;h<=DE;h++){const l=document.createElement('div');l.className='hl';l.textContent=String(h).padStart(2,'0')+':00';hrs.appendChild(l);}
-
   const gr=document.getElementById('tlgrid'),th=DE-DS+1;
-
   gr.style.height=(th*HP)+'px';gr.innerHTML='';
-
-  for(let h=0;h<th;h++){const ln=document.createElement('div');ln.className='hline';const hf=document.createElement('div');hf.style.cssText=`position:absolute;left:0;right:0;top:${HP/2}px;height:1px;background:#12192a;`;ln.appendChild(hf);gr.appendChild(ln);}
-
+  for(let h=0;h<th;h++){const ln=document.createElement('div');ln.className='hline';const hf=document.createElement('div');hf.style.cssText=`position:absolute;left:0;right:0;top:${HP/2}px;height:1px;background:#12192a`;ln.appendChild(hf);gr.appendChild(ln);}
   const now=new Date();
-
   if(fmt(now)===ss){const nm=now.getHours()*60+now.getMinutes(),nt=(nm-DS*60)*(HP/60);if(nt>=0&&nt<=th*HP){const nl=document.createElement('div');nl.className='now-line';nl.style.top=nt+'px';nl.innerHTML='<div class="now-dot"></div>';gr.appendChild(nl);}}
-
   const cols=layOut(timed);
-
   timed.forEach((e,i)=>{
-
     const A=AR[e.area]||AR['Otro'];
-
     const sm=tm(e.timeStart)||DS*60,em2=tm(e.timeEnd)||(sm+60);
-
     const top=(sm-DS*60)*(HP/60),ht=Math.max((em2-sm)*(HP/60),28);
-
     const col=cols[i].col,tot=cols[i].total,pct=100/tot,lft=col*pct;
-
     const bl=document.createElement('div');bl.className='evb';
-
-    bl.style.cssText=`top:${top}px;height:${ht}px;left:calc(${lft}% + 4px);width:calc(${pct}% - 8px);background:${A.b};border-left-color:${A.c};`;
-
+    bl.style.cssText=`top:${top}px;height:${ht}px;left:calc(${lft}% + 4px);width:calc(${pct}% - 8px);background:${A.b};border-left-color:${A.c}`;
     bl.onclick=()=>openEv(e.id);
-
     bl.innerHTML=`<div class="evb-t" style="color:${A.c};">${ex(e.title)}</div>${ht>=44?`<div class="evb-m" style="color:${A.c};">${e.timeStart}${e.timeEnd?'–'+e.timeEnd:''} · ${e.audience}</div>`:''}`;
-
     gr.appendChild(bl);
-
   });
-
   if(!de.length){const em=document.createElement('div');em.style.cssText='position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:none;';em.innerHTML='<div style="font-size:32px;">📅</div><p style="color:var(--dim);font-size:14px;">Sin eventos para este día</p>';gr.appendChild(em);}
-
   const ft=[...timed].sort((a,b)=>(a.timeStart||'').localeCompare(b.timeStart||''))[0];
-
   document.getElementById('tlw').scrollTop=ft?Math.max(0,(tm(ft.timeStart)-DS*60-30)*(HP/60)):(8-DS)*HP;
-
 }
-
 function layOut(ev){
-
   const s=[...ev].map((e,i)=>({i,s:tm(e.timeStart)||0,n:tm(e.timeEnd)||(tm(e.timeStart)||0)+60}));
-
   s.sort((a,b)=>a.s-b.s);
-
   const r=new Array(ev.length).fill(null).map(()=>({col:0,total:1}));
-
   const gr=[];
-
   s.forEach(e=>{let p=false;for(const g of gr){if(g.some(x=>e.s<x.n&&e.n>x.s)){g.push(e);p=true;break;}}if(!p)gr.push([e]);});
-
   gr.forEach(g=>{const u=[];g.sort((a,b)=>a.s-b.s).forEach(e=>{let c=0;while(u[c]!==undefined&&e.s<u[c])c++;u[c]=e.n;r[e.i]={col:c,total:u.length};});g.forEach(e=>{r[e.i].total=u.length;});});
-
   return r;
-
 }
-
 function rUp(){
-
   const ss=fmt(selD),fa=document.getElementById('farea').value;
-
   const up=evs.filter(e=>e.date>ss&&(!fa||e.area===fa)).sort((a,b)=>a.date.localeCompare(b.date)||(a.timeStart||'').localeCompare(b.timeStart||'')).slice(0,4);
-
   const el=document.getElementById('upsec');
-
   if(!up.length){el.innerHTML='';return;}
-
   el.innerHTML='<p style="font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Próximos eventos</p>'+
-
     up.map(e=>{const A=AR[e.area]||AR['Otro'],dd=e.date.split('-')[2],mn=pd(e.date).toLocaleDateString('es-MX',{month:'short'});
-
-    return `<div class="upi" onclick="jumpTo('${e.id}','${e.date}')"><div class="upb"><span style="font-size:9px;color:var(--muted);text-transform:uppercase;">${mn}</span><span style="font-size:17px;font-weight:800;color:var(--text);line-height:1;">${dd}</span></div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${ex(e.title)}</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">${e.area} · ${e.timeStart||'Sin hora'}</div></div><div style="width:8px;height:8px;border-radius:50%;background:${A.c};flex-shrink:0;"></div></div>`;
-
+    return`<div class="upi" onclick="jumpTo('${e.id}','${e.date}')"><div class="upb"><span style="font-size:9px;color:var(--muted);text-transform:uppercase;">${mn}</span><span style="font-size:17px;font-weight:800;color:var(--text);line-height:1;">${dd}</span></div><div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${ex(e.title)}</div><div style="font-size:11px;color:var(--muted);margin-top:2px;">${e.area} · ${e.timeStart||'Sin hora'}</div></div><div style="width:8px;height:8px;border-radius:50%;background:${A.c};flex-shrink:0;"></div></div>`;
   }).join('');
-
 }
-
 function jumpTo(id,ds){const[y,m,d]=ds.split('-').map(Number);selD=new Date(y,m-1,d);calM=new Date(y,m-1,d);actP=evs.find(e=>e.id===id)||null;renderAll();}
-
 function openAdd(){actP='add';rPanel();}
-
 function openEv(id){actP=evs.find(e=>String(e.id)===String(id))||null;rPanel();}
-
 function closeP(){actP=null;rPanel();}
-
 function rPanel(){
-
   const el=document.getElementById('rpanel');
-
   if(actP==='add'&&edM){
-
     const ss=fmt(selD);
-
     el.innerHTML=`<div class="card" style="max-height:88vh;overflow-y:auto;">
-
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-
         <h3 style="font-family:'Syne',sans-serif;font-size:17px;font-weight:800;color:#fff;">Nuevo Evento</h3>
-
         <button style="background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;" onclick="closeP()">&#x2715;</button>
-
       </div>
-
       <div class="fg"><label class="fl">Título *</label><input id="ft" class="fi" type="text" placeholder="Ej: Capacitación Seguridad" /></div>
-
       <div class="fg"><label class="fl">Fecha *</label><input id="fd" class="fi" type="date" value="${ss}" /></div>
-
       <div class="fg"><label class="fl">Horario</label>
-
         <div class="tr2">
-
           <div><div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Inicio</div><input id="fts" class="fi" type="time" /></div>
-
           <div><div style="font-size:10px;color:var(--muted);margin-bottom:4px;">Fin</div><input id="fte" class="fi" type="time" /></div>
-
         </div>
-
         <div style="font-size:11px;color:var(--dim);margin-top:5px;">Deja vacío si no tiene horario fijo.</div>
-
       </div>
-
       <div class="fg"><label class="fl">Área responsable</label>
-
         <select id="fa2" class="fi">${Object.keys(AR).map(a=>`<option value="${a}">${a}</option>`).join('')}</select>
-
       </div>
-
       <div class="fg"><label class="fl">Dirigido a</label>
-
         <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;">
-
           ${AU.map(a=>`<label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;"><input type="checkbox" class="aud-cb" value="${a.v}" style="accent-color:var(--accent);width:15px;height:15px;"> ${a.i} ${a.v}</label>`).join('')}
-
         </div>
-
       </div>
-
       <div class="fg" style="margin-bottom:14px;"><label class="fl">Descripción / Notas</label>
-
         <textarea id="fdesc" class="fi" rows="3" placeholder="Instructor, lugar, materiales…"></textarea>
-
       </div>
-
       <div id="ferr" style="color:var(--danger);font-size:12px;margin-bottom:8px;display:none;">Completa título y fecha.</div>
-
       <div style="display:flex;gap:8px;">
-
         <button id="savebtn" class="btn ba" style="flex:1;padding:11px;font-size:14px;font-weight:700;">Guardar</button>
-
         <button class="btn bg2" style="padding:11px 14px;" onclick="closeP()">Cancelar</button>
-
       </div>
-
     </div>`;
-
     document.getElementById('savebtn').addEventListener('click',doSave);
-
   } else if(actP&&typeof actP==='object'){
-
     const e=actP,A=AR[e.area]||AR['Otro'];
-
     const ts=e.timeStart?(e.timeStart+(e.timeEnd?' – '+e.timeEnd:'')):'Sin horario específico';
-
     el.innerHTML=`<div class="card">
-
       <div style="display:flex;justify-content:space-between;margin-bottom:14px;">
-
         <div style="width:48px;height:48px;border-radius:14px;background:${A.b};border:1px solid ${A.bd};display:flex;align-items:center;justify-content:center;font-size:20px;">📋</div>
-
         <button style="background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;" onclick="closeP()">&#x2715;</button>
-
       </div>
-
       <h3 style="font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:14px;">${ex(e.title)}</h3>
-
       ${[['Fecha',hd(e.date)],['Horario',ts],['Área',e.area],['Para',e.audience]].map(([l,v])=>`<div class="dr"><span class="dl">${l}</span><span class="dv">${v}</span></div>`).join('')}
-
-      ${e.description?`<div style="margin-top:12px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;"><div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:6px;">Notas</div><div style="font-size:13px;color:#94a3b8;line-height:1.6;">${ex(e.description)}</div></div>`:''}
-
+      ${e.description?`<div style="margin-top:12px;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;"><div style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-bottom:6px;">Notas</div><div style="font-size:13px;color:#94a3b8;line-height:1.6;">${ex(e.description)}</div></div>":''}
       ${edM?`<button id="delbtn" data-id="${e.id}" class="btn" style="width:100%;margin-top:12px;background:#1f0e0e;border:1px solid #7f1d1d;color:var(--danger);padding:11px;">🗑 Eliminar evento</button>`:''}
-
     </div>`;
-
     if(edM){const db=document.getElementById('delbtn');if(db)db.addEventListener('click',()=>doDelete(db.dataset.id));}
-
   } else {
-
     el.innerHTML=`<div class="card" style="text-align:center;"><div style="font-size:36px;margin-bottom:12px;">📌</div><p style="color:var(--dim);font-size:13px;line-height:1.6;">Selecciona un evento para ver sus detalles.${edM?'<br><span style="color:var(--accent);cursor:pointer;font-weight:600;" onclick="openAdd()">o crea uno nuevo</span>':''}</p></div>`;
-
   }
-
 }
-
 async function doSave(){
-
   const t=document.getElementById('ft').value.trim(),d=document.getElementById('fd').value;
-
   if(!t||!d){document.getElementById('ferr').style.display='block';return;}
-
   const cbs=document.querySelectorAll('.aud-cb:checked');
-
   const aud=cbs.length?Array.from(cbs).map(c=>c.value).join(', '):'Todos';
-
   const ev={title:t,date:d,timeStart:document.getElementById('fts').value||'',timeEnd:document.getElementById('fte').value||'',area:document.getElementById('fa2').value,audience:aud,description:document.getElementById('fdesc').value.trim()};
-
   const btn=document.getElementById('savebtn');
-
   btn.disabled=true;btn.textContent='Guardando…';
-
   setSB('busy');
-
   try{
-
     const res=await apiInsert(ev);
-
     evs=await apiRead();
-
     setSB('ok');actP=null;renderAll();
-
   }catch(e){
-
     setSB('err');
-
     btn.disabled=false;btn.textContent='Guardar';
-
     alert('❌ Error al guardar: '+e.message);
-
   }
-
 }
-
 async function doDelete(id){
-
   if(!confirm('¿Eliminar este evento?'))return;
-
   setSB('busy');
-
   try{
-
     await apiDelete(id);
-
     evs=await apiRead();
-
     setSB('ok');actP=null;renderAll();
-
   }catch(e){setSB('err');alert('❌ Error al eliminar: '+e.message);}
-
 }
-
 function toggleEd(){
-
   if(edM){
-
     edM=false;
-
     document.getElementById('edbtn').textContent='🔒 Modo Editor';
-
     document.getElementById('edbtn').classList.remove('on');
-
     document.getElementById('addbtn').style.display='none';
-
     actP=null;renderAll();
-
   }else{
-
     document.getElementById('pmod').classList.add('open');
-
     setTimeout(()=>document.getElementById('pin').focus(),100);
-
   }
-
 }
-
 function checkPass(){
-
   if(document.getElementById('pin').value===EP){closeMod();activateEd();}
-
   else document.getElementById('pe').style.display='block';
-
 }
-
 function activateEd(){edM=true;document.getElementById('edbtn').textContent='🔓 Editor activo';document.getElementById('edbtn').classList.add('on');document.getElementById('addbtn').style.display='';renderAll();}
-
 function closeMod(){document.getElementById('pmod').classList.remove('open');document.getElementById('pin').value='';document.getElementById('pe').style.display='none';}
-
 document.getElementById('pmod').addEventListener('click',e=>{if(e.target===e.currentTarget)closeMod();});
-
 document.getElementById('pin').addEventListener('keydown',e=>{if(e.key==='Enter')checkPass();});
-
 </script>
-
 </body>
-
 </html>
